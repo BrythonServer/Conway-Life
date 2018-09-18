@@ -63,7 +63,8 @@ class Cell(object):
 
 
 
-Sprite(redcircle, (100,100))
+def step():
+    print("step!")
 
 myapp = App()
 myapp.run()
