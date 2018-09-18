@@ -15,8 +15,10 @@ class Cell(object):
     blues = []
     redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
     bluecircle = CircleAsset(CELLDIAMETER/2, LineStule(0, black), blue)
+    alive = set()
     
     def __init__(self, logicalpos):
+        self.pos = logicalpos
         if self.reds:
             self.cell = self.freereds.pop()
             self.cell.visible = True
@@ -25,6 +27,7 @@ class Cell(object):
         self.cell.position = (logicalpos[0]*CELLDIAMETER, logicalpos[1]*CELLDIAMETER)
         self.reds.append(self.cell)
         self.age = 0
+        self.alive.add(self.pos)
 
     def ageoneday(self):
         # convert from red to blue
@@ -56,7 +59,7 @@ class Cell(object):
         self.cell.visible = False
         activelist.remove(self.cell)
         freelist.append(self.cell)
-            
+        self.alive.remove(self.pos)
 
 
 
