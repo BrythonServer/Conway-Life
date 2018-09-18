@@ -15,6 +15,8 @@ class Cell(object):
     blues = []
     redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
     bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
+    adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,-1), (1,1)]
+    adjcentcoords = lambda pos, delta: [pos[0]+x[0], pos[1]+x[1]) for x in delta]
     alive = set()
     
     def __init__(self, logicalpos):
@@ -60,7 +62,19 @@ class Cell(object):
         activelist.remove(self.cell)
         freelist.append(self.cell)
         self.alive.remove(self.pos)
+        
+    def neighbors(self):
+        """
+        Count living neighbors.
+        """
+        adjacentcounts = [1 if x in self.alive else 0 for 
+            x in self.adjacentcoords(self.pos, self.adjacentdelta)]
+        return sum(adjacentcounts)
 
+    def openneighbors(self):
+        """
+        Get a list of open neighbor cells.
+        """
 
 
 def step():
