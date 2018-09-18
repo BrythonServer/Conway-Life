@@ -50,7 +50,7 @@ class Cell(object):
             
     def die(self):
         # make invisible and move sprite to free list
-        if self.age == 1
+        if self.age == 1:
             freelist = self.freeblues
             activelist = self.blues
         else:
