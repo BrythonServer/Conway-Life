@@ -14,7 +14,7 @@ class Cell(object):
     reds = []
     blues = []
     redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
-    bluecircle = CircleAsset(CELLDIAMETER/2, LineStule(0, black), blue)
+    bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
     alive = set()
     
     def __init__(self, logicalpos):
