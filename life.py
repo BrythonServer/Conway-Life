@@ -74,7 +74,8 @@ class Cell(object):
     def openneighbors(self):
         """
         Get a list of open neighbor cells.
-        """
+        """ 
+        filter()  # WIP
 
 
 def step():
