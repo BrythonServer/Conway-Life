@@ -87,8 +87,7 @@ class Cell(object):
         """
         Get a list of open neighbor cells.
         """ 
-        return filter(lambda x: x, [False if x in self.alive else x for 
-            x in self.adjacentcoords(self.pos, self.adjacentdelta)])
+        return filter(lambda x: not x in self.alive, self.adjacentcoords(self.pos, self.adjacentdelta))
 
     @classmethod
     def Initialize(cls):
