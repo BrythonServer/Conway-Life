@@ -23,16 +23,17 @@ class Cell(object):
     celldict = {}
     
     def __init__(self, logicalpos):
-        self.pos = logicalpos
-        self.makenew()
-        self.alive.add(self.pos)
-        self.alivecells.append(self)
+        self.makenew(logicalpos)
         self._setphysicalposition(logicalpos)
 
     def _setphysicalposition(self, pos):
         self.cell.position = (pos[0]*CELLDIAMETER, pos[1]*CELLDIAMETER)
         
-    def makenew(self):
+    def makenew(self, pos):
+        self.pos = logicalpos
+        self.alive.add(self.pos)
+        self.alivecells.append(self)
+        self._setphysicalposition(pos)
         if self.freereds:
             self.cell = self.freereds.pop()
             self.cell.visible = True
@@ -74,6 +75,7 @@ class Cell(object):
         activelist.remove(self.cell)
         freelist.append(self.cell)
         self.alive.remove(self.pos)
+        self.alivecells.remove(self)
 
     @classmethod
     def neighbors(cls, pos):
@@ -98,8 +100,7 @@ class Cell(object):
     def NewCell(cls, pos):
         try:
             c = cls.deadcells.pop()
-            c._setphysicalposition(pos)
-            c.makenew()
+            c.makenew(pos)
             c.visible = True
         except IndexError:
             c = Cell(pos)
@@ -113,12 +114,12 @@ def step():
     todie = []
     empties = set()
     tobirth = []
+    print([c.pos for c in Cell.alivecells])
     for c in Cell.alivecells:
         n = Cell.neighbors(c.pos)
         if n > 3 or n < 2:
             todie.append(c)
         empties.update(c.openneighbors())
-    print(list(empties))
     for c in empties:
         if Cell.neighbors(c) == 3:
             tobirth.append(c)
