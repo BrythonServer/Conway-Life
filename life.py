@@ -16,7 +16,7 @@ class Cell(object):
     redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
     bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
     adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,-1), (1,1)]
-    adjcentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
+    adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
     alive = set()
     alivecells = []
     deadcells = []    
