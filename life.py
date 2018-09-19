@@ -17,10 +17,10 @@ class Cell(object):
     bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
     adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
     adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
-    alive = set()
-    alivecells = []
-    deadcells = []    
-    celldict = {}
+    alive = set()   # coordinate pairs for alive cells
+    alivecells = [] # list of living Cell objects
+    deadcells = []  # list of dead Cell objects
+    celldict = {}   # use to look up a Cell if you know the coordinates
     
     def __init__(self, logicalpos):
         self.makenew(logicalpos)
@@ -54,7 +54,7 @@ class Cell(object):
             else:
                 newcell = Sprite(self.bluecircle, (0,0))
 
-            # move a blue cell to the actie list
+            # move a blue cell to the active list
             self.blues.append(newcell)
             self.cell.visible = False  
             # move the red cell to free list
