@@ -18,18 +18,28 @@ class Cell(object):
     adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,-1), (1,1)]
     adjcentcoords = lambda pos, delta: [pos[0]+x[0], pos[1]+x[1]) for x in delta]
     alive = set()
+    alivecells = []
+    deadcells = []    
     
     def __init__(self, logicalpos):
         self.pos = logicalpos
+        self.makenew()
+        self.alive.add(self.pos)
+        self.alivecells.append(self)
+        self._setphysicalposition(logicalpos)
+
+    def _setphysicalposition(self, pos):
+        self.cell.position = (pos[0]*CELLDIAMETER, pos[1]*CELLDIAMETER)
+        
+    def makenew(self):
         if self.reds:
             self.cell = self.freereds.pop()
             self.cell.visible = True
         else:
             self.cell = Sprite(self.redcircle, (0,0))
-        self.cell.position = (logicalpos[0]*CELLDIAMETER, logicalpos[1]*CELLDIAMETER)
         self.reds.append(self.cell)
         self.age = 0
-        self.alive.add(self.pos)
+        
 
     def ageoneday(self):
         # convert from red to blue
@@ -78,9 +88,27 @@ class Cell(object):
         return filter(lambda x: x, [False if x in self.alive else x for 
             x in self.adjacentcoords(self.pos, self.adjacentdelta)])
 
+    @classmethod
+    def Initialize(cls):
+        for c in cls.alive:
+            c.visible = False
+            
+    @classmethod
+    def NewCell(cls, pos):
+        try:
+            c = cls.deadcells.pop()
+            c._setphysicalposition(pos)
+            c.makenew()
+            c.visible = True
+        except IndexError:
+            c = Cell(pos)
 
 def step():
     print("step!")
+    
+Cell.NewCell(0,1)
+Cell.NewCell(0,0)
+Cell.NewCell(0,2)
 
 myapp = App()
 myapp.run()
