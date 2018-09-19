@@ -115,6 +115,7 @@ def step():
     empties = set()
     tobirth = []
     for c in Cell.alivecells:
+        c.ageoneday()
         n = Cell.neighbors(c.pos)
         if n > 3 or n < 2:
             todie.append(c)
