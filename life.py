@@ -114,7 +114,9 @@ def step():
     todie = []
     empties = set()
     tobirth = []
+    print("Step")
     for c in Cell.alivecells:
+        print("tick1")
         n = Cell.neighbors(c.pos)
         if n > 3 or n < 2:
             todie.append(c)
@@ -132,4 +134,4 @@ Cell.NewCell((20,20))
 Cell.NewCell((20,22))
 
 myapp = App()
-myapp.run()
+myapp.run(step)
