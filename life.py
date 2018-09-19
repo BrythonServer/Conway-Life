@@ -114,7 +114,6 @@ def step():
     todie = []
     empties = set()
     tobirth = []
-    print([c.pos for c in Cell.alivecells])
     for c in Cell.alivecells:
         n = Cell.neighbors(c.pos)
         if n > 3 or n < 2:
@@ -131,6 +130,14 @@ def step():
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
+
+Cell.NewCell((30,21))
+Cell.NewCell((30,20))
+Cell.NewCell((30,22))
+
+Cell.NewCell((20,31))
+Cell.NewCell((20,30))
+Cell.NewCell((20,32))
 
 #for c in Cell.alivecells:
     #print(c.pos, c.adjacentdelta)
