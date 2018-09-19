@@ -106,7 +106,7 @@ class Cell(object):
             c = Cell(pos)
             
     @classmehod
-    def KillCell(cls, pos)
+    def KillCell(cls, pos):
         cell = cls.celldict.pop(pos)
         cell.die()
 
