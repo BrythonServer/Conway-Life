@@ -38,7 +38,7 @@ class Cell(object):
             self.cell.visible = True
         else:
             self.cell = Sprite(self.redcircle, (0,0))
-            print("new sprite")
+            print("new RED")
         self._setphysicalposition(pos)
         self.celldict[self.pos] = self
         self.reds.append(self.cell)
@@ -54,6 +54,8 @@ class Cell(object):
                 newcell.visible = True
             else:
                 newcell = Sprite(self.bluecircle, (0,0))
+                print("new BLUE")
+                
             # move a blue cell to the actie list
             self.blues.append(newcell)
             self.cell.visible = False  
