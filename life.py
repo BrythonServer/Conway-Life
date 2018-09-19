@@ -127,6 +127,7 @@ def step():
         Cell.KillCell(c.pos)
     for pos in tobirth:
         Cell.NewCell(pos)
+    print(len(Cell.alivecells), len(Cell.deadcells))
 
 Cell.NewCell((5,5))
 Cell.NewCell((6,6))
