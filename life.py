@@ -130,7 +130,7 @@ def step():
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
-print(Cell.neighbors((20,20)))
+print(Cell.adjacentcoords(pos, Cell.adjacentdelta))
 
 myapp = App()
 myapp.run(step)
