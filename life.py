@@ -24,7 +24,6 @@ class Cell(object):
     
     def __init__(self, logicalpos):
         self.makenew(logicalpos)
-        self._setphysicalposition(logicalpos)
 
     def _setphysicalposition(self, pos):
         self.cell.position = (pos[0]*CELLDIAMETER, pos[1]*CELLDIAMETER)
