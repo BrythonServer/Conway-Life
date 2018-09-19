@@ -133,7 +133,7 @@ Cell.NewCell((20,22))
 
 for c in Cell.alivecells:
     print(c.pos, c.adjacentdelta)
-    print(Cell.adjacentcoords(c.pos, [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]))
+    print(Cell.adjacentcoords(c.pos, c.adjacentdelta))
     #print(c.openneighbors())
 
 myapp = App()
