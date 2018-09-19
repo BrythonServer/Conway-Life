@@ -127,6 +127,13 @@ def step():
     for pos in tobirth:
         Cell.NewCell(pos)
 
+Cell.NewCell((5,5))
+Cell.NewCell((6,6))
+Cell.NewCell((7,6))
+Cell.NewCell((7,5))
+Cell.NewCell((7,4))
+
+
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
