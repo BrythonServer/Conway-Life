@@ -130,9 +130,10 @@ def step():
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
-print(Cell.adjacentcoords((20,20), Cell.adjacentdelta))
+print(Cell.adjacentcoords((20,21), Cell.adjacentdelta))
 print([1 if x in Cell.alive else 0 for 
             x in Cell.adjacentcoords((20,20), Cell.adjacentdelta)])
+print(Cell.alive)
 
 myapp = App()
 myapp.run(step)
