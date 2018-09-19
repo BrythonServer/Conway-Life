@@ -106,9 +106,9 @@ class Cell(object):
 def step():
     print("step!")
     
-Cell.NewCell(0,1)
-Cell.NewCell(0,0)
-Cell.NewCell(0,2)
+Cell.NewCell((0,1))
+Cell.NewCell((0,0))
+Cell.NewCell((0,2))
 
 myapp = App()
 myapp.run()
