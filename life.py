@@ -15,7 +15,7 @@ class Cell(object):
     blues = []
     redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
     bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
-    adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,-1), (1,1)]
+    adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
     adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
     alive = set()
     alivecells = []
@@ -130,7 +130,7 @@ def step():
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
-print(Cell.adjacentcoords(pos, Cell.adjacentdelta))
+print(Cell.adjacentcoords((20,20), Cell.adjacentdelta))
 
 myapp = App()
 myapp.run(step)
