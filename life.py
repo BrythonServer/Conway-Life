@@ -38,6 +38,7 @@ class Cell(object):
             self.cell.visible = True
         else:
             self.cell = Sprite(self.redcircle, (0,0))
+            print("new sprite")
         self._setphysicalposition(pos)
         self.celldict[self.pos] = self
         self.reds.append(self.cell)
@@ -128,7 +129,7 @@ def step():
         Cell.KillCell(c.pos)
     for pos in tobirth:
         Cell.NewCell(pos)
-    print(len(Cell.alivecells), len(Cell.deadcells))
+    #print(len(Cell.alivecells), len(Cell.deadcells))
 
 Cell.NewCell((5,5))
 Cell.NewCell((6,6))
