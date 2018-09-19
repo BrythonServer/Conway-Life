@@ -87,7 +87,7 @@ class Cell(object):
         """
         Get a list of open neighbor cells.
         """ 
-        return filter(lambda x: x not in self.alive, self.adjacentcoords(self.pos, self.adjacentdelta))
+        return filter(lambda x: x not in Cell.alive, Cell.adjacentcoords(self.pos, self.adjacentdelta))
 
     @classmethod
     def Initialize(cls):
@@ -132,10 +132,10 @@ Cell.NewCell((20,20))
 Cell.NewCell((20,22))
 
 for c in Cell.alivecells:
-    print(c.pos, c.adjacentdelta)
-    print(Cell.adjacentcoords(c.pos, c.adjacentdelta))
-    #print(c.openneighbors())
-    print(list(filter(lambda x: x not in Cell.alive, Cell.adjacentcoords(c.pos, c.adjacentdelta)))
+    #print(c.pos, c.adjacentdelta)
+    #print(Cell.adjacentcoords(c.pos, c.adjacentdelta))
+    print(list(c.openneighbors()))
+    #print(list(filter(lambda x: x not in Cell.alive, Cell.adjacentcoords(c.pos, c.adjacentdelta)))
 )
 myapp = App()
 myapp.run(step)
