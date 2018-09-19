@@ -133,6 +133,12 @@ Cell.NewCell((7,6))
 Cell.NewCell((7,5))
 Cell.NewCell((7,4))
 
+Cell.NewCell((35,5))
+Cell.NewCell((36,6))
+Cell.NewCell((37,6))
+Cell.NewCell((37,5))
+Cell.NewCell((37,4))
+
 
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
