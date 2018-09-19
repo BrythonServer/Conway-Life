@@ -20,6 +20,7 @@ class Cell(object):
     alive = set()
     alivecells = []
     deadcells = []    
+    celldict = {}
     
     def __init__(self, logicalpos):
         self.pos = logicalpos
@@ -37,6 +38,7 @@ class Cell(object):
             self.cell.visible = True
         else:
             self.cell = Sprite(self.redcircle, (0,0))
+        self.celldict[self.pos] = self
         self.reds.append(self.cell)
         self.age = 0
         
@@ -72,14 +74,14 @@ class Cell(object):
         activelist.remove(self.cell)
         freelist.append(self.cell)
         self.alive.remove(self.pos)
-        
-    def neighbors(self):
+
+    @classmethod
+    def neighbors(cls, pos):
         """
         Count living neighbors.
         """
-        adjacentcounts = [1 if x in self.alive else 0 for 
-            x in self.adjacentcoords(self.pos, self.adjacentdelta)]
-        return sum(adjacentcounts)
+        return sum([1 if x in cls.alive else 0 for 
+            x in cls.adjacentcoords(pos, cls.adjacentdelta)])
 
     def openneighbors(self):
         """
@@ -102,10 +104,29 @@ class Cell(object):
             c.visible = True
         except IndexError:
             c = Cell(pos)
+            
+    @classmehod
+    def KillCell(cls, pos)
+        cell = cls.celldict.pop(pos)
+        cell.die()
 
 def step():
-    print("step!")
-    
+    todie = []
+    empties = set()
+    tobirth = []
+    for c in Cell.alivecells:
+        n = Cell.neighbors(c.pos)
+        if n > 3 or n < 2:
+            todie.append(c)
+        empties.update(c.openneighbors())
+    for c in empties:
+        if Cell.neighbors(c) == 3:
+            tobirth.append(c)
+    for c in todie:
+        Cell.KillCell(c.pos)
+    for pos in tobirth:
+        Cell.NewCell(pos)
+
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
