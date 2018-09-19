@@ -116,10 +116,10 @@ def step():
     tobirth = []
     for c in Cell.alivecells:
         n = Cell.neighbors(c.pos)
-        print("tick")
         if n > 3 or n < 2:
             todie.append(c)
         empties.update(c.openneighbors())
+        print("tick")
     for c in empties:
         if Cell.neighbors(c) == 3:
             tobirth.append(c)
@@ -131,6 +131,9 @@ def step():
 Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
+
+for c in Cell.alivecells:
+    print(c.openneighbors())
 
 myapp = App()
 myapp.run(step)
