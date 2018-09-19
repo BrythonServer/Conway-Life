@@ -76,6 +76,7 @@ class Cell(object):
         freelist.append(self.cell)
         self.alive.remove(self.pos)
         self.alivecells.remove(self)
+        self.deadcells.append(self)
 
     @classmethod
     def neighbors(cls, pos):
