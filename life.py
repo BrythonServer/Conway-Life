@@ -105,7 +105,7 @@ class Cell(object):
         except IndexError:
             c = Cell(pos)
             
-    @classmehod
+    @classmethod
     def KillCell(cls, pos):
         cell = cls.celldict.pop(pos)
         cell.die()
