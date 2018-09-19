@@ -135,6 +135,7 @@ for c in Cell.alivecells:
     print(c.pos, c.adjacentdelta)
     print(Cell.adjacentcoords(c.pos, c.adjacentdelta))
     #print(c.openneighbors())
-
+    print(filter(lambda x: x not in Cell.alive, Cell.adjacentcoords(c.pos, c.adjacentdelta))
+)
 myapp = App()
 myapp.run(step)
