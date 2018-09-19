@@ -32,7 +32,7 @@ class Cell(object):
         self.cell.position = (pos[0]*CELLDIAMETER, pos[1]*CELLDIAMETER)
         
     def makenew(self):
-        if self.reds:
+        if self.freereds:
             self.cell = self.freereds.pop()
             self.cell.visible = True
         else:
