@@ -33,12 +33,12 @@ class Cell(object):
         self.pos = pos
         self.alive.add(self.pos)
         self.alivecells.append(self)
-        self._setphysicalposition(pos)
         if self.freereds:
             self.cell = self.freereds.pop()
             self.cell.visible = True
         else:
             self.cell = Sprite(self.redcircle, (0,0))
+        self._setphysicalposition(pos)
         self.celldict[self.pos] = self
         self.reds.append(self.cell)
         self.age = 0
