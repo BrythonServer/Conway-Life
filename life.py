@@ -75,7 +75,8 @@ class Cell(object):
         """
         Get a list of open neighbor cells.
         """ 
-        filter()  # WIP
+        return filter(lambda x: x, [False if x in self.alive else x for 
+            x in self.adjacentcoords(self.pos, self.adjacentdelta)])
 
 
 def step():
