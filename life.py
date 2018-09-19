@@ -30,7 +30,7 @@ class Cell(object):
         self.cell.position = (pos[0]*CELLDIAMETER, pos[1]*CELLDIAMETER)
         
     def makenew(self, pos):
-        self.pos = logicalpos
+        self.pos = pos
         self.alive.add(self.pos)
         self.alivecells.append(self)
         self._setphysicalposition(pos)
