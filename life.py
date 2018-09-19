@@ -131,7 +131,8 @@ Cell.NewCell((20,21))
 Cell.NewCell((20,20))
 Cell.NewCell((20,22))
 print(Cell.adjacentcoords((20,20), Cell.adjacentdelta))
-print(list(Cell.alive))
+print([1 if x in Cell.alive else 0 for 
+            x in Cell.adjacentcoords((20,20), Cell.adjacentdelta)])
 
 myapp = App()
 myapp.run(step)
