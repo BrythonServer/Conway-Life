@@ -113,11 +113,9 @@ class Cell(object):
         cell.die()
 
 def step():
-    print("!", time())
     todie = []
     empties = set()
     tobirth = []
-    print("*", time())
     for c in Cell.alivecells:
         c.ageoneday()
         n = Cell.neighbors(c.pos)
@@ -132,7 +130,7 @@ def step():
         Cell.KillCell(c.pos)
     for pos in tobirth:
         Cell.NewCell(pos)
-    #print(len(Cell.alivecells), len(Cell.deadcells))
+    print(len(Cell.alivecells), len(Cell.deadcells))
 
 def MakeAGlider(pos):
     deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
