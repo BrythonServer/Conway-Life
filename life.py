@@ -137,7 +137,7 @@ def step():
 def MakeAGlider(pos):
     deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
     for p in deltas:
-        Cell.NewCell((pos[0]+p[0],pos[1]+p[1]) 
+        Cell.NewCell((pos[0]+p[0],pos[1]+p[1]))
 
 for i in range(10):
     MakeAGlider((i*6, i*2))
