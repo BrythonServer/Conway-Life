@@ -113,20 +113,17 @@ class Cell(object):
         cell.die()
 
 def step():
+    print("!", time())
     todie = []
     empties = set()
     tobirth = []
-    print("!", time())
+    print("*", time())
     for c in Cell.alivecells:
         c.ageoneday()
-        print(" 1", time())
         n = Cell.neighbors(c.pos)
-        print(" 2", time())
         if n > 3 or n < 2:
             todie.append(c)
-        print(" 3", time())
         empties.update(c.openneighbors())
-        print(" 4", time())
     print(" ", time())
     for c in empties:
         if Cell.neighbors(c) == 3:
