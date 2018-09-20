@@ -134,30 +134,13 @@ def step():
         Cell.NewCell(pos)
     #print(len(Cell.alivecells), len(Cell.deadcells))
 
-Cell.NewCell((5,5))
-Cell.NewCell((6,6))
-Cell.NewCell((7,6))
-Cell.NewCell((7,5))
-Cell.NewCell((7,4))
+def MakeAGlider(pos):
+    deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
+    for p in deltas:
+        Cell.NewCell((pos[0]+p[0],pos[1]+p[1]) 
 
-Cell.NewCell((35,5))
-Cell.NewCell((36,6))
-Cell.NewCell((37,6))
-Cell.NewCell((37,5))
-Cell.NewCell((37,4))
-
-
-Cell.NewCell((20,21))
-Cell.NewCell((20,20))
-Cell.NewCell((20,22))
-
-Cell.NewCell((30,21))
-Cell.NewCell((30,20))
-Cell.NewCell((30,22))
-
-Cell.NewCell((20,31))
-Cell.NewCell((20,30))
-Cell.NewCell((20,32))
+for i in range(10):
+    MakeAGlider((i*6, i*2))
 
 #for c in Cell.alivecells:
     #print(c.pos, c.adjacentdelta)
