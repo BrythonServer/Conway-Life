@@ -1,5 +1,6 @@
 from ggame import CircleAsset, Color, LineStyle, Sprite
 from ggame import App
+from time import time
 
 red = Color(0xff0000, 1.0)
 blue = Color(0x0000ff, 1.0)
@@ -115,19 +116,24 @@ def step():
     todie = []
     empties = set()
     tobirth = []
+    print("!", time())
     for c in Cell.alivecells:
         c.ageoneday()
         n = Cell.neighbors(c.pos)
         if n > 3 or n < 2:
             todie.append(c)
         empties.update(c.openneighbors())
+    print(" ", time())
     for c in empties:
         if Cell.neighbors(c) == 3:
             tobirth.append(c)
+    print(" ", time())
     for c in todie:
         Cell.KillCell(c.pos)
+    print(" ", time())
     for pos in tobirth:
         Cell.NewCell(pos)
+    print(" ", time())
     #print(len(Cell.alivecells), len(Cell.deadcells))
 
 Cell.NewCell((5,5))
