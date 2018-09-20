@@ -37,6 +37,7 @@ class Cell(object):
             self.cell = self.freereds.pop()
             self.cell.visible = True
         else:
+            print("making a red sprite")
             self.cell = Sprite(self.redcircle, (0,0))
         self._setphysicalposition(pos)
         self.celldict[self.pos] = self
@@ -52,6 +53,7 @@ class Cell(object):
                 newcell = self.freeblues.pop()
                 newcell.visible = True
             else:
+                print("making a blue sprite")
                 newcell = Sprite(self.bluecircle, (0,0))
 
             # move a blue cell to the active list
