@@ -119,21 +119,22 @@ def step():
     print("!", time())
     for c in Cell.alivecells:
         c.ageoneday()
+        print(" 1", time())
         n = Cell.neighbors(c.pos)
+        print(" 2", time())
         if n > 3 or n < 2:
             todie.append(c)
+        print(" 3", time())
         empties.update(c.openneighbors())
+        print(" 4", time())
     print(" ", time())
     for c in empties:
         if Cell.neighbors(c) == 3:
             tobirth.append(c)
-    print(" ", time())
     for c in todie:
         Cell.KillCell(c.pos)
-    print(" ", time())
     for pos in tobirth:
         Cell.NewCell(pos)
-    print(" ", time())
     #print(len(Cell.alivecells), len(Cell.deadcells))
 
 Cell.NewCell((5,5))
