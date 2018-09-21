@@ -124,7 +124,6 @@ def step():
         if n > 3 or n < 2:
             todie.append(c)
         empties.update(c.openneighbors())
-    print(" ", time())
     for c in empties:
         if Cell.neighbors(c) == 3:
             tobirth.append(c)
@@ -132,7 +131,6 @@ def step():
         Cell.KillCell(c.pos)
     for pos in tobirth:
         Cell.NewCell(pos)
-    print(len(Cell.alivecells), len(Cell.deadcells))
 
 def MakeAGlider(pos):
     deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
@@ -141,12 +139,6 @@ def MakeAGlider(pos):
 
 for i in range(3):
     MakeAGlider((i*6, i*2))
-
-#for c in Cell.alivecells:
-    #print(c.pos, c.adjacentdelta)
-    #print(Cell.adjacentcoords(c.pos, c.adjacentdelta))
-    #print(list(c.openneighbors()))
-    #print(list(filter(lambda x: x not in Cell.alive, Cell.adjacentcoords(c.pos, c.adjacentdelta))))
 
 myapp = App()
 myapp.run(step)
