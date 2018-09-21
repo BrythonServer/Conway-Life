@@ -139,7 +139,7 @@ def MakeAGlider(pos):
     for p in deltas:
         Cell.NewCell((pos[0]+p[0],pos[1]+p[1]))
 
-for i in range(10):
+for i in range(3):
     MakeAGlider((i*6, i*2))
 
 #for c in Cell.alivecells:
