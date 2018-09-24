@@ -51,11 +51,13 @@ def ScanCell(coords):
             empties.append(n)
     return count, empties
 
-# return number of live neighbors of a dead cell
-def ScanEmpty(coords):
-    
+
 
 NewCellAt((5,5))
+
+def step():
+    pass
+
 
 """
 
@@ -190,4 +192,4 @@ for i in range(10):
 """
 
 myapp = App()
-myapp.run()
+myapp.run(step)
