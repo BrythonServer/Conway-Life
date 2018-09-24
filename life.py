@@ -12,26 +12,47 @@ bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
 
 deadcells = []
 livecells = {}
+neighborsof = {}
 
 pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
 adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
 adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
 
+def GetAdjacent(coords):
+    # build a list of adjacentcoordinates
+    try:
+        neighbors = neighborsof[coords]
+    except:
+        # build a list of adjacent coordinates
+        neighbors = adjacentcoords(coords, adjacentdelta)
+        neighborsof[coords] = neighbors
+    return neighbors
+        
+
 def NewCellAt(coords):
-    # build a list of adjacent coordinates
-    adj = adjacentcoords(coords, adjacentdelta)
     try:
         newcell = deadcells.pop()
     except:
         newcell = (Sprite(redcircle,(0,0)), Sprite(bluecircle,(0,0)))
-    newcell = (newcell, adj)
     livecells[coords] = newcell
-    newcell[0][0].visible = True
-    newcell[0][1].visible = False
-    newcell[0][0].position = pfroml(coords)
+    newcell[0].visible = True
+    newcell[1].visible = False
+    newcell[0].position = pfroml(coords)
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
+    cell = livecells[coords]
+    count = 0
+    empties = []
+    for i in range(8):
+        if cell[1][i] in livecells:
+            count = count + 1
+        else:
+            empties.append(cell[1][i])
+    return count, empties
+
+# return number of live neighbors of a dead cell
+def ScanEmpty(coords):
     
 
 NewCellAt((5,5))
