@@ -19,7 +19,7 @@ def NewCellAt(coords):
     try:
         newcell = deadcells.pop()
     except:
-        newcell = (Sprite(self.redcircle,pfroml(coords)), Sprite(self.bluecircle,(0,0)))
+        newcell = (Sprite(redcircle,pfroml(coords)), Sprite(bluecircle,(0,0)))
         # create two sprites, as tuple, store in live cells
 
 print(NewCellAt((5,5)))
