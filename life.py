@@ -157,4 +157,4 @@ for i in range(10):
 """
 
 myapp = App()
-myapp.run(step)
+myapp.run()
