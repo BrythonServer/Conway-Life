@@ -14,15 +14,23 @@ deadcells = []
 livecells = {}
 
 pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
+adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
+adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
 
 def NewCellAt(coords):
+    # build a list of adjacent coordinates
+    adj = adjacentcoords(coords, adjacentdelta)
     try:
         newcell = deadcells.pop()
     except:
-        newcell = (Sprite(redcircle,pfroml(coords)), Sprite(bluecircle,(0,0)))
-        # create two sprites, as tuple, store in live cells
+        newcell = (Sprite(redcircle,(0,0)), Sprite(bluecircle,(0,0)))
+    newcell = (newcell, adj)
+    livecells[coords] = newcell
+    newcell[0][0].visible = True
+    newcell[0][0].position = pfroml(coords)
+    
 
-print(NewCellAt((5,5)))
+NewCellAt((5,5))
 
 """
 
