@@ -109,7 +109,7 @@ def MouseMove(event):
     print(event)
 
 myapp = App()
-myapp.listenMouseEvent('mousedown', MouseDown):
-myapp.listenMouseEvent('mouseup', MouseUp):
-myapp.listenMouseEvent('mousemove', MouseMove):
+App.listenMouseEvent('mousedown', MouseDown):
+App.listenMouseEvent('mouseup', MouseUp):
+App.listenMouseEvent('mousemove', MouseMove):
 myapp.run(step)
