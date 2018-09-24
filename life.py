@@ -92,8 +92,6 @@ def step():
     for p in birthlist:
         NewCellAt(p)
     
-    print(len(neighborsof), len(livecells), len(deadcells))
-
     # clean up
     killlist = []
     birthlist = []
