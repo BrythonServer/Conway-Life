@@ -100,14 +100,16 @@ for i in range(5):
 mousedown = None
 
 def MouseDown(event):
-    pass
+    print(event)
 
 def MouseUp(event):
-    pass
+    print(event)
 
 def MouseMove(event):
-    pass
+    print(event)
 
 myapp = App()
-
+myapp.listenMouseEvent('mousedown', MouseDown):
+myapp.listenMouseEvent('mouseup', MouseUp):
+myapp.listenMouseEvent('mousemove', MouseMove):
 myapp.run(step)
