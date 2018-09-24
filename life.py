@@ -54,12 +54,19 @@ def ScanCell(coords):
     return count, empties
 
 
+def MakeAGlider(pos):
+    deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
+    for p in deltas:
+        NewCellAt((pos[0]+p[0],pos[1]+p[1]))
 
-NewCellAt((5,5))
-NewCellAt((5,6))
-NewCellAt((5,7))
+for i in range(10):
+    MakeAGlider((i*6, i*2))
 
 def step():
+    global killlist
+    global birthlist
+    print(len(neighborsof))
+
     allempties = set()
     # scan living cells
     for p, val in livecells.items():
