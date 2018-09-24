@@ -59,14 +59,13 @@ def MakeAGlider(pos):
     for p in deltas:
         NewCellAt((pos[0]+p[0],pos[1]+p[1]))
 
-#for i in range(10):
-#    MakeAGlider((i*6, i*2))
+for i in range(5):
+    MakeAGlider((i*6, i*2))
 
 
 def step():
     global killlist
     global birthlist
-    print(len(neighborsof), len(livecells), len(deadcells))
 
     allempties = set()
     # scan living cells
@@ -92,6 +91,9 @@ def step():
     # process births
     for p in birthlist:
         NewCellAt(p)
+    
+    print(len(neighborsof), len(livecells), len(deadcells))
+
     # clean up
     killlist = []
     birthlist = []
