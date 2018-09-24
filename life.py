@@ -29,6 +29,9 @@ def NewCellAt(coords):
     newcell[0][0].visible = True
     newcell[0][1].visible = False
     newcell[0][0].position = pfroml(coords)
+
+# return number of live neighbors and list of empty neighbors
+def ScanCell(coords):
     
 
 NewCellAt((5,5))
