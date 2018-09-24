@@ -13,6 +13,8 @@ bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
 deadcells = []
 livecells = {}
 neighborsof = {}
+killlist = []
+birthlist = []
 
 pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
 adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
@@ -37,7 +39,7 @@ def NewCellAt(coords):
     livecells[coords] = newcell
     newcell[0].visible = True
     newcell[1].visible = False
-    newcell[0].position = pfroml(coords)
+    newcell[0].position = newcell[1].position = pfroml(coords)
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
@@ -54,11 +56,35 @@ def ScanCell(coords):
 
 
 NewCellAt((5,5))
+NewCellAt((5,6))
+NewCellAt((5,7))
 
 def step():
-    pass
-
-
+    allempties = set()
+    # scan living cells
+    for p, val in livecells.items():
+        # change reds to blue
+        if val[0].visible:
+            val[0].visible = False
+            val[1].visible = True
+        n, empties = ScanCell(p)
+        if n > 3 or n < 2:
+            killlist.append(p)
+        allempties.update(empties)
+    # scan all neighboring empty cells to find newbies
+    for p in allempties:
+        n, empties = ScanCell(p)
+        if n == 3:
+            birthlist.append(p)
+    # process deaths
+    for p in killlist:
+        c = livecells.pop(p)
+        c[0].visible = c[1].visible = False
+        deadcells.append(c)
+    # process births
+    for p in birthlist:
+        NewCellAt(p)
+        
 """
 
 class Cell(object):
