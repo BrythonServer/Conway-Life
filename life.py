@@ -37,6 +37,7 @@ def NewCellAt(coords):
     except:
         newcell = (Sprite(redcircle,(0,0)), Sprite(bluecircle,(0,0)))
     livecells[coords] = newcell
+    print(len(livecells), livecells)
     newcell[0].visible = True
     newcell[1].visible = False
     newcell[0].position = newcell[1].position = pfroml(coords)
@@ -61,6 +62,7 @@ def MakeAGlider(pos):
 
 for i in range(5):
     MakeAGlider((i*6, i*2))
+print(len(neighborsof), len(livecells), len(deadcells))
 
 
 def step():
