@@ -17,6 +17,7 @@ killlist = []
 birthlist = []
 
 pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
+lfromp = lambda p: (p[0]//CELLDIAMETER, p[1]//CELLDIAMETER)
 adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
 adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
 
@@ -54,15 +55,6 @@ def ScanCell(coords):
     return count, empties
 
 
-def MakeAGlider(pos):
-    deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
-    for p in deltas:
-        NewCellAt((pos[0]+p[0],pos[1]+p[1]))
-
-for i in range(5):
-    MakeAGlider((i*6, i*2))
-
-
 def step():
     global killlist
     global birthlist
@@ -97,6 +89,25 @@ def step():
     birthlist = []
         
 
+def MakeAGlider(pos):
+    deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
+    for p in deltas:
+        NewCellAt((pos[0]+p[0],pos[1]+p[1]))
+
+for i in range(5):
+    MakeAGlider((i*6, i*2))
+
+mousedown = None
+
+def MouseDown(event):
+    pass
+
+def MouseUp(event):
+    pass
+
+def MouseMove(event):
+    pass
 
 myapp = App()
+
 myapp.run(step)
