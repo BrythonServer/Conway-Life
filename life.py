@@ -27,6 +27,7 @@ def NewCellAt(coords):
     newcell = (newcell, adj)
     livecells[coords] = newcell
     newcell[0][0].visible = True
+    newcell[0][1].visible = False
     newcell[0][0].position = pfroml(coords)
     
 
