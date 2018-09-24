@@ -61,6 +61,7 @@ NewCellAt((5,7))
 
 def step():
     allempties = set()
+    print("hi")
     # scan living cells
     for p, val in livecells.items():
         # change reds to blue
@@ -84,6 +85,9 @@ def step():
     # process births
     for p in birthlist:
         NewCellAt(p)
+    # clean up
+    killlist = []
+    birthlist = []
         
 """
 
