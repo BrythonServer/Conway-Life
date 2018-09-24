@@ -41,14 +41,14 @@ def NewCellAt(coords):
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
-    cell = livecells[coords]
+    neighbors = neighborsof[coords]
     count = 0
     empties = []
-    for i in range(8):
-        if cell[1][i] in livecells:
+    for n in neighbors:
+        if n in livecells:
             count = count + 1
         else:
-            empties.append(cell[1][i])
+            empties.append(n)
     return count, empties
 
 # return number of live neighbors of a dead cell
