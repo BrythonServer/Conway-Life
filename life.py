@@ -7,15 +7,30 @@ blue = Color(0x0000ff, 1.0)
 black = Color(0,1.0)
 
 CELLDIAMETER = 10
+redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
+bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
 
+deadcells = []
+livecells = {}
+
+pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
+
+def NewCellAt(coords):
+    try:
+        newcell = deadcells.pop()
+    except:
+        newcell = (Sprite(self.redcircle,pfroml(coords)), Sprite(self.bluecircle,(0,0)))
+        # create two sprites, as tuple, store in live cells
+
+print(NewCellAt((5,5)))
+
+"""
 
 class Cell(object):
     freereds = []
     freeblues = []
     reds = []
     blues = []
-    redcircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), red)
-    bluecircle = CircleAsset(CELLDIAMETER/2, LineStyle(0, black), blue)
     adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
     adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
     alive = set()   # coordinate pairs for alive cells
@@ -83,16 +98,16 @@ class Cell(object):
 
     @classmethod
     def neighbors(cls, pos):
-        """
+        ""
         Count living neighbors.
-        """
+        ""
         return sum([1 if x in cls.alive else 0 for 
             x in cls.adjacentcoords(pos, cls.adjacentdelta)])
 
     def openneighbors(self):
-        """
+        ""
         Get a list of open neighbor cells.
-        """ 
+        "" 
         return filter(lambda x: x not in Cell.alive, Cell.adjacentcoords(self.pos, self.adjacentdelta))
 
     @classmethod
@@ -137,8 +152,9 @@ def MakeAGlider(pos):
     for p in deltas:
         Cell.NewCell((pos[0]+p[0],pos[1]+p[1]))
 
-for i in range(3):
+for i in range(10):
     MakeAGlider((i*6, i*2))
+"""
 
 myapp = App()
 myapp.run(step)
