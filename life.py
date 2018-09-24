@@ -43,7 +43,7 @@ def NewCellAt(coords):
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
-    neighbors = neighborsof[coords]
+    neighbors = GetAdjacent(coords)
     count = 0
     empties = []
     for n in neighbors:
@@ -61,7 +61,6 @@ NewCellAt((5,7))
 
 def step():
     allempties = set()
-    print("hi")
     # scan living cells
     for p, val in livecells.items():
         # change reds to blue
