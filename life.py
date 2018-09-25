@@ -1,6 +1,5 @@
 from ggame import CircleAsset, Color, LineStyle, Sprite
 from ggame import App
-from time import time
 
 red = Color(0xff0000, 1.0)
 blue = Color(0x0000ff, 1.0)
