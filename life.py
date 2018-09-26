@@ -32,14 +32,15 @@ def GetAdjacent(coords):
         
 
 def NewCellAt(coords):
-    try:
-        newcell = deadcells.pop()
-    except:
-        newcell = (Sprite(redcircle,(0,0)), Sprite(bluecircle,(0,0)))
-    livecells[coords] = newcell
-    newcell[0].visible = True
-    newcell[1].visible = False
-    newcell[0].position = newcell[1].position = pfroml(coords)
+    if not coors in livecells:
+        try:
+            newcell = deadcells.pop()
+        except:
+            newcell = (Sprite(redcircle,(0,0)), Sprite(bluecircle,(0,0)))
+        livecells[coords] = newcell
+        newcell[0].visible = True
+        newcell[1].visible = False
+        newcell[0].position = newcell[1].position = pfroml(coords)
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
