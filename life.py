@@ -99,14 +99,19 @@ for i in range(5):
 mousedown = None
 
 def MouseDown(event):
+    global mousedown
+    mousedown = True
     pos = lfromp((event.x, event.y))
     NewCellAt(pos)
 
 def MouseUp(event):
-    print(event)
+    global mousedown
+    mousedown = False
 
 def MouseMove(event):
-    print(event)
+    if mousedown:
+        pos = lfromp((event.x, event.y))
+        NewCellAt(pos)
 
 App.listenMouseEvent('mousedown', MouseDown)
 App.listenMouseEvent('mouseup', MouseUp)
