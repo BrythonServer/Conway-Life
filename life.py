@@ -58,6 +58,7 @@ def ScanCell(coords):
 def step():
     global killlist
     global birthlist
+    global running
 
     if not running:
         return
@@ -118,7 +119,7 @@ def MouseMove(event):
         NewCellAt(pos)
         
 def Spacebar(event):
-    print("space")
+    global running
     if running:
         running = False
     else:
