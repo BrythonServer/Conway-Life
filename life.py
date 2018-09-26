@@ -153,7 +153,7 @@ def Move():
     for p, val in livecells.items():
         pphys = pfroml((p[0]+pdir[0],p[1]+pdir[1]))
         val[0].position = pphys
-        val[1].position = pphs
+        val[1].position = pphys
 
 App.listenMouseEvent('mousedown', MouseDown)
 App.listenMouseEvent('mouseup', MouseUp)
