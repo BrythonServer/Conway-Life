@@ -112,7 +112,7 @@ def MouseDown(event):
     global screenoffset
     mousedown = True
     pos = lfromp((event.x, event.y))
-    NewCellAt(pos)
+    NewCellAt((pos[0]+screenoffset[0], pos[1]+screenoffset[1]))
 
 def MouseUp(event):
     global mousedown
@@ -122,7 +122,7 @@ def MouseMove(event):
     global screenoffset
     if mousedown:
         pos = lfromp((event.x, event.y))
-        NewCellAt(pos)
+        NewCellAt((pos[0]+screenoffset[0], pos[1]+screenoffset[1]))
         
 def Spacebar(event):
     global running
