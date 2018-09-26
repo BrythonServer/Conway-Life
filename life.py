@@ -15,6 +15,8 @@ neighborsof = {}
 killlist = []
 birthlist = []
 
+screenoffset = (0,0)
+
 pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
 lfromp = lambda p: (p[0]//CELLDIAMETER, p[1]//CELLDIAMETER)
 adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
@@ -125,8 +127,6 @@ def Spacebar(event):
         running = False
     else:
         running = True
-
-screenoffset = (0,0)
 
 def Left(event):
     global screenoffset
