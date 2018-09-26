@@ -32,7 +32,7 @@ def GetAdjacent(coords):
         
 
 def NewCellAt(coords):
-    if not coors in livecells:
+    if not coords in livecells:
         try:
             newcell = deadcells.pop()
         except:
