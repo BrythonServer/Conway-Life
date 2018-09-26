@@ -43,7 +43,7 @@ def NewCellAt(coords):
         livecells[coords] = newcell
         newcell[0].visible = True
         newcell[1].visible = False
-        newcell[0].position = newcell[1].position = pfroml((coords[0]+screenoffset[0], screenoffset[1]+pdl[1]))
+        newcell[0].position = newcell[1].position = pfroml((coords[0]+screenoffset[0], coords[1]+screenoffset[1]))
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
