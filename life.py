@@ -125,10 +125,45 @@ def Spacebar(event):
     else:
         running = True
 
+screenoffset = (0,0)
+
+def Left(event):
+    print("left")
+    global screenoffset
+    screenoffset = (screenoffset[0]-1, screenoffset[1])
+    Move()
+    
+def Right(event):
+    global screenoffset
+    screenoffset = (screenoffset[0]+1, screenoffset[1])
+    Move()
+    
+def Up(event):
+    global screenoffset
+    screenoffset = (screenoffset[0], screenoffset[1]-1)
+    Move()
+    
+def Down(event):
+    global screenoffset
+    screenoffset = (screenoffset[0], screenoffset[1]+1)
+    Move()
+    
+def Move():
+    global screenoffset
+    pdir = pfroml(screenoffset)
+    for p, val in livecells.items():
+        pphys = pfroml((p[0]+pdir[0],p[1]+pdir[1]))
+        val[0].position = pphys
+        val[1].position = pphs
+
 App.listenMouseEvent('mousedown', MouseDown)
 App.listenMouseEvent('mouseup', MouseUp)
 App.listenMouseEvent('mousemove', MouseMove)
 App.listenKeyEvent('keypress', 'space', Spacebar)
+App.listenKeyEvent('keypress', 'left', Left)
+App.listenKeyEvent('keypress', 'rightarrow', Right)
+App.listenKeyEvent('keypress', 'uparrow', Up)
+App.listenKeyEvent('keypress', 'downarrow', Down)
 
 myapp = App()
 myapp.run(step)
