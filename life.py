@@ -32,6 +32,7 @@ def GetAdjacent(coords):
         
 
 def NewCellAt(coords):
+    global screenoffset
     if not coords in livecells:
         try:
             newcell = deadcells.pop()
@@ -40,7 +41,7 @@ def NewCellAt(coords):
         livecells[coords] = newcell
         newcell[0].visible = True
         newcell[1].visible = False
-        newcell[0].position = newcell[1].position = pfroml(coords)
+        newcell[0].position = newcell[1].position = pfroml((coords[0]+screenoffset[0], coords[1]+screenoffset[1]))
 
 # return number of live neighbors and list of empty neighbors
 def ScanCell(coords):
@@ -150,6 +151,7 @@ def Down(event):
 def Move():
     global screenoffset
     pdir = pfroml(screenoffset)
+    print(pdir)
     for p, val in livecells.items():
         pphys = pfroml((p[0]+pdir[0],p[1]+pdir[1]))
         val[0].position = pphys
