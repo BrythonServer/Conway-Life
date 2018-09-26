@@ -95,7 +95,7 @@ def step():
     killlist = []
     birthlist = []
         
-
+"""
 def MakeAGlider(pos):
     deltas = [(0,0), (1,1), (2,1), (2,0), (2,-1)]
     for p in deltas:
@@ -103,9 +103,10 @@ def MakeAGlider(pos):
 
 for i in range(5):
     MakeAGlider((i*6, i*2))
+"""
 
 mousedown = None
-running = True
+running = False
 
 def MouseDown(event):
     global mousedown
@@ -166,6 +167,10 @@ App.listenKeyEvent('keydown', 'left arrow', Left)
 App.listenKeyEvent('keydown', 'right arrow', Right)
 App.listenKeyEvent('keydown', 'up arrow', Up)
 App.listenKeyEvent('keydown', 'down arrow', Down)
+
+print("Press <space> to start and stop.")
+print("Use mouse to set initial living cells.")
+
 
 myapp = App()
 myapp.run(step)
