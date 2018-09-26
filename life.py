@@ -118,6 +118,7 @@ def MouseMove(event):
         NewCellAt(pos)
         
 def Spacebar(event):
+    print("space")
     if running:
         running = False
     else:
