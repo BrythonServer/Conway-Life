@@ -170,6 +170,7 @@ App.listenKeyEvent('keydown', 'down arrow', Down)
 
 print("Press <space> to start and stop.")
 print("Use mouse to set initial living cells.")
+print("Use cursor keys to move the screen.")
 
 
 myapp = App()
