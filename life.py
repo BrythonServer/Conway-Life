@@ -59,6 +59,8 @@ def step():
     global killlist
     global birthlist
 
+    if not running:
+        return
     allempties = set()
     # scan living cells
     for p, val in livecells.items():
@@ -98,6 +100,7 @@ for i in range(5):
     MakeAGlider((i*6, i*2))
 
 mousedown = None
+running = True
 
 def MouseDown(event):
     global mousedown
@@ -113,10 +116,17 @@ def MouseMove(event):
     if mousedown:
         pos = lfromp((event.x, event.y))
         NewCellAt(pos)
+        
+def Spacebar(event):
+    if running:
+        running = False
+    else:
+        running = True
 
 App.listenMouseEvent('mousedown', MouseDown)
 App.listenMouseEvent('mouseup', MouseUp)
 App.listenMouseEvent('mousemove', MouseMove)
+App.listenKeyEvent('keypress', 'space', Spacebar)
 
 myapp = App()
 myapp.run(step)
