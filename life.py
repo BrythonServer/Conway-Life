@@ -99,7 +99,8 @@ for i in range(5):
 mousedown = None
 
 def MouseDown(event):
-    print(event)
+    pos = lfromp((event.x, event.y))
+    NewCellAt(pos)
 
 def MouseUp(event):
     print(event)
