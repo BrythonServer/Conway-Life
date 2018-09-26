@@ -153,10 +153,8 @@ def Down(event):
     
 def Move():
     global screenoffset
-    pdir = pfroml(screenoffset)
-    print(pdir)
     for p, val in livecells.items():
-        pphys = pfroml((p[0]+pdir[0],p[1]+pdir[1]))
+        pphys = pfroml((p[0]+screenoffset[0],p[1]+screenoffset[1]))
         val[0].position = pphys
         val[1].position = pphys
 
