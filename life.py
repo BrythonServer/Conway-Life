@@ -128,7 +128,6 @@ def Spacebar(event):
 screenoffset = (0,0)
 
 def Left(event):
-    print("left")
     global screenoffset
     screenoffset = (screenoffset[0]-1, screenoffset[1])
     Move()
@@ -160,10 +159,10 @@ App.listenMouseEvent('mousedown', MouseDown)
 App.listenMouseEvent('mouseup', MouseUp)
 App.listenMouseEvent('mousemove', MouseMove)
 App.listenKeyEvent('keypress', 'space', Spacebar)
-App.listenKeyEvent('keypress', 'left', Left)
-App.listenKeyEvent('keypress', 'rightarrow', Right)
-App.listenKeyEvent('keypress', 'uparrow', Up)
-App.listenKeyEvent('keypress', 'downarrow', Down)
+App.listenKeyEvent('keydown', 'left arrow', Left)
+App.listenKeyEvent('keydown', 'right arrow', Right)
+App.listenKeyEvent('keydown', 'up arrow', Up)
+App.listenKeyEvent('keydown', 'down arrow', Down)
 
 myapp = App()
 myapp.run(step)
