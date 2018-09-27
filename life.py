@@ -1,3 +1,5 @@
+# Exemplar implementation of the Conway's Life Project
+
 from ggame import CircleAsset, Color, LineStyle, Sprite
 from ggame import App
 
@@ -18,7 +20,9 @@ birthlist = []
 # logical screen shift
 screenoffset = (0,0)
 
+# physical coordinates from logical
 pfroml = lambda p: (p[0]*CELLDIAMETER, p[1]*CELLDIAMETER)
+# logical coordinates from physical
 lfromp = lambda p: (p[0]//CELLDIAMETER, p[1]//CELLDIAMETER)
 adjacentdelta = [(-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1)]
 adjacentcoords = lambda pos, delta: [(pos[0]+x[0], pos[1]+x[1]) for x in delta]
